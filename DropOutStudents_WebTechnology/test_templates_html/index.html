@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Drop-out students</title>
+	<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+	<div class="menu">
+		<a href="" class="menu-item active">View all</a>
+		<a href="" class="menu-item">Add</a>
+		<a href="" class="menu-item">Edit</a>
+		<a href="" class="menu-item">Delete</a>
+	</div>
+	<div class="container">
+		<table>
+			<tr>
+				<td>id</td>
+				<td>name</td>
+				<td>fn</td>
+				<td>subject</td>
+				<td>comment</td>
+				<td>score</td>
+			</tr>
+		</table>
+
+		<form  id="createForm" action="" method="POST">
+			<div class="form-group">
+				<label>Name</label>
+				<input name="name" type="text" value="" required/>
+			</div>
+			<div class="form-group">
+				<label>FN</label>
+				<input name="fk_number" type="text" value="" required/>
+			</div>
+			<div class="form-group">
+				<label>Subject</label>
+				<select name="group" required>
+					<option value="">subject</option>
+					<option value="М">М</option>
+					<option value="ПМ">ПМ</option>
+					<option value="ОКН">ОКН</option>
+					<option value="ЯКН">ЯКН</option>
+		        </select>
+			</div>
+			<div class="form-group">
+				<label>comment</label>
+				<input name="comment" type="text" value="" required/>
+			</div>
+			<div class="form-group">
+				<label>Score</label>
+				<input name="score" type="text" value="" required/>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Add" />
+			</div>
+
+		</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
+
+SELECT students.id, students.name, students.fk_number, subjects.title, categories.title as category, scores.score FROM students JOIN scores ON students.id = scores.student_id JOIN subjects ON subjects.id = scores.subject_id RIGHT JOIN categories ON scores.category_id = select category.id from categories;

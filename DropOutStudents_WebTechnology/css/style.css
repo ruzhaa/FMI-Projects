@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+body { margin: 0px; min-height: 100%; background-color: #fff; overflow-x: hidden; font: 400 14px/1.6 'Open Sans', Verdana, sans-serif; color: #505050; }
+
+.menu { background-color: #ddd; text-align: center; }
+.menu-item { display: inline-block; padding: 15px; cursor: pointer; text-decoration: none; color: #505050; }
+.menu-item.active,
+.menu-item:hover { background-color: #bbb; }
+.container { width: 80%; margin-left: auto; margin-right: auto; margin-top: 40px; }
+
+table { width: 100%; border-spacing: 0px; border-collapse: collapse; margin: 20px 0; }
+table tr:first-child { background-color: #f5f5f5; }
+table tr td { padding: 15px;  }
+table > tbody > tr > td { border: 1px solid #ddd; text-align: center; }
+
+#createForm { width: 50%; margin-left: auto; margin-right: auto; }
+#createForm fieldset { padding: 20px; }
+#createForm .form-group { margin-bottom: 10px; }
+#createForm .form-group label { display: inline-block; }
+#createForm .form-group input,
+#createForm .form-group select { display: block; width: 100%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; background-color: #fff; }
+#createForm .form-group input[type=submit] { margin-top: 20px; cursor: pointer; background-color: #4caf50; color: #fff; }
+#createForm .form-group input[type=submit]:hover { background-color: #419644; }
+
+#uplaodFile { width: 50%; margin-left: auto; margin-right: auto; }
+#uplaodFile fieldset { padding: 20px; }
+#uplaodFile .form-group { margin-bottom: 10px; }
+#uplaodFile .form-group label { display: inline-block; }
+#uplaodFile .form-group input,
+#uplaodFile .form-group select { display: block; width: 100%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; background-color: #fff; }
+#uplaodFile .form-group input[type=submit] { margin-top: 20px; cursor: pointer; background-color: #4caf50; color: #fff; }
+#uplaodFile .form-group input[type=submit]:hover { background-color: #419644; }

@@ -1,0 +1,7 @@
+body { margin: 0px; min-height: 100%; background-color: #fff; overflow-x: hidden; font: 400 14px/1.6 'Open Sans', Verdana, sans-serif; color: #505050; }
+
+.menu { background-color: #ddd; text-align: center; }
+.menu-item { display: inline-block; padding: 10px; cursor: pointer; text-decoration: none; }
+.menu-item.active,
+.menu-item:hover { background-color: #bbb; }
+.container { width: 70%; margin-left: auto; margin-right: auto; }

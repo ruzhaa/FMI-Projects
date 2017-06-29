@@ -2,15 +2,34 @@
 body { margin: 0px; min-height: 100%; background-color: #fff; overflow-x: hidden; font: 400 14px/1.6 'Open Sans', Verdana, sans-serif; color: #505050; }
 
 .menu { background-color: #ddd; text-align: center; }
-.menu-item { display: inline-block; padding: 15px; cursor: pointer; text-decoration: none; color: #505050; }
+.menu-item { display: inline-block; padding: 15px; cursor: pointer; text-decoration: none; color: #505050; font-size: 16px; font-weight: 500; text-transform: uppercase; }
 .menu-item.active,
-.menu-item:hover { background-color: #bbb; }
+.menu-item:hover { background-color: #bbb; color: #fff; }
 .container { width: 80%; margin-left: auto; margin-right: auto; margin-top: 40px; }
+.filter-data, 
+.all-data { max-height: 800px; overflow: hidden; overflow-y: auto; border: 1px solid #bbb; }
 
-table { width: 100%; border-spacing: 0px; border-collapse: collapse; margin: 20px 0; }
-table tr:first-child { background-color: #f5f5f5; }
-table tr td { padding: 15px;  }
-table > tbody > tr > td { border: 1px solid #ddd; text-align: center; }
+#filerTable .form-group { margin-bottom: 10px; display: inline-block; }
+#filerTable .form-group label { display: inline-block; }
+#filerTable .form-group input,
+#filerTable .form-group select { padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; background-color: #fff; }
+#filerTable .form-group input[type=submit] { margin-left: 10px; cursor: pointer; background-color: #4caf50; color: #fff; }
+#filerTable .form-group input[type=submit]:hover { background-color: #419644; }
+#filerTable .message { padding: 10px; margin-bottom: 10px; border: 1px solid #4caf50; color: #4caf50; border-radius: 4px; }
+
+.edit-button { height: 42px; display: inline-block; text-decoration: none; padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; background-color: #4caf50; color: #fff; }
+.edit-button:hover { background-color: #419644; }
+.clear-form { display: inline-block; }
+.clear-form input[type=submit] { height: 42px; font-size: 14px; text-decoration: none; padding: 10px 15px; border: 1px solid red; border-radius: 4px; cursor: pointer; background-color: red; color: #fff; }
+.clear-form input[type=submit]:hover { background-color: #e80000; }
+
+.all-data table { width: 100%; border-spacing: 0px; border-collapse: collapse; margin: 0; }
+.all-data table tr td { padding: 15px;  }
+.all-data table thead tr { background-color: rgba(52,73,94,.94); color: #fff; font-size: 16px; font-weight: 500; text-transform: uppercase; }
+.all-data table thead tr > td,
+.all-data table > tbody > tr > td { border: 1px solid #505050; }
+.all-data table > tbody > tr:nth-of-type(even) { background-color: #ddd; }
+
 
 #createForm { width: 50%; margin-left: auto; margin-right: auto; }
 #createForm fieldset { padding: 20px; }
@@ -21,6 +40,9 @@ table > tbody > tr > td { border: 1px solid #ddd; text-align: center; }
 #createForm .form-group input[type=submit] { margin-top: 20px; cursor: pointer; background-color: #4caf50; color: #fff; }
 #createForm .form-group input[type=submit]:hover { background-color: #419644; }
 
+#createForm .error-msg { display: none; padding: 10px; margin-bottom: 10px; border: 1px solid red; color: red; border-radius: 4px; }
+#createForm .success-msg { display: none; padding: 10px; margin-bottom: 10px; border: 1px solid #4caf50; color: #4caf50; border-radius: 4px; }
+
 #uplaodFile { width: 50%; margin-left: auto; margin-right: auto; }
 #uplaodFile fieldset { padding: 20px; }
 #uplaodFile .form-group { margin-bottom: 10px; }
@@ -29,3 +51,31 @@ table > tbody > tr > td { border: 1px solid #ddd; text-align: center; }
 #uplaodFile .form-group select { display: block; width: 100%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; background-color: #fff; }
 #uplaodFile .form-group input[type=submit] { margin-top: 20px; cursor: pointer; background-color: #4caf50; color: #fff; }
 #uplaodFile .form-group input[type=submit]:hover { background-color: #419644; }
+
+#statisticForm { width: 50%; margin-left: auto; margin-right: auto; }
+#statisticForm fieldset { padding: 20px; }
+#statisticForm .form-group { margin-bottom: 10px; }
+#statisticForm .form-group label { display: inline-block; }
+#statisticForm .form-group input,
+#statisticForm .form-group select { display: block; width: 100%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; background-color: #fff; }
+#statisticForm .form-group input[type=submit] { margin-top: 20px; cursor: pointer; background-color: #4caf50; color: #fff; }
+#statisticForm .form-group input[type=submit]:hover { background-color: #419644; }
+#statisticForm .form-group.scores label { display: block; }
+#statisticForm .form-group.scores input { display: inline-block; width: 48%; }
+
+.filter-data table { width: 100%; border-spacing: 0px; border-collapse: collapse; margin: 0; }
+.filter-data table tr td { padding: 15px;  }
+.filter-data table thead tr { background-color: rgba(52,73,94,.94); color: #fff; font-size: 16px; font-weight: 500; text-transform: uppercase; }
+.filter-data table thead tr > td,
+.filter-data table > tbody > tr > td { border: 1px solid #505050; }
+.filter-data table > tbody > tr:hover { background-color: #ddd; }
+.filter-data table > tbody > tr > td:last-child { text-align: center; }
+
+.filter-data .score.red { background-color: rgba(255, 0, 0, 0.2); }
+.filter-data .score.orange { background-color: rgba(255, 152, 0, 0.2); }
+.filter-data .score.blue { background-color: rgba(0, 142, 255, 0.2); }
+.filter-data .score.purpul { background-color: rgba(156, 39, 176, 0.2); }
+.filter-data .score.green { background-color: rgba(6, 255, 6, 0.2); }
+
+.filter-data .img img { width: 50px; height: 50px; }
+

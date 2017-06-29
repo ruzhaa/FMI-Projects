@@ -31,15 +31,28 @@ create table scores (
 	subject_id bigint REFERENCES subjects(id) ON DELETE CASCADE,  
 	category_id bigint REFERENCES categories(id) ON DELETE CASCADE, 
 	score double,
-	PRIMARY KEY (id),
-	UNIQUE KEY unique_score (student_id, subject_id, category_id)
+	PRIMARY KEY (id)
 );
 
-create table test_import (
-	id bigint auto_increment PRIMARY KEY,
-	name varchar(256),
-	fn varchar(256),
-	control double,
-	project double,
-	exam double
-);
+ALTER TABLE scores ADD CONSTRAINT constr_ID UNIQUE (student_id, subject_id, category_id);
+
+delete from students;
+delete from subjects;
+delete from categories;
+delete from scores;
+
+drop table students;
+drop table subjects;
+drop table categories;
+drop table scores;
+
+
+
+-- create table test_import (
+-- 	id bigint auto_increment PRIMARY KEY,
+-- 	name varchar(256),
+-- 	fn varchar(256),
+-- 	control double,
+-- 	project double,
+-- 	exam double
+-- );

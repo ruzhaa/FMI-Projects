@@ -5,16 +5,14 @@ class ImportTemplate{
     }
 
 	function display($parameters){
-
 		$html = '<div class="menu">
-			<a href="" class="menu-item">View all</a>
+			<a href="?page=main" class="menu-item">View all</a>
 			<a href="?page=students" class="menu-item">Add</a>
-			<a href="" class="menu-item">Edit</a>
-			<a href="" class="menu-item">Delete</a>
-			<a href="" class="menu-item active">Import</a>
+			<a href="?page=import" class="menu-item active">Import</a>
+			<a href="?page=statistics" class="menu-item">Statistics</a>
 		</div>
 		<div class="container">
-			<form  id="uplaodFile" action="" method="POST">
+			<form  id="uplaodFile" action="" method="POST" enctype="multipart/form-data">
 				<input type="hidden" name="act" value="upload" />
 				<fieldset>
 				<legend>Import excel table:</legend>

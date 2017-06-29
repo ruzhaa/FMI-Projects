@@ -18,8 +18,4 @@ class Student {
     	$this->dbdata_table = "students";
     	$this->id = $id;
     }
-
-
-
-  
 }

@@ -2,7 +2,6 @@
  
 include('inc/config.inc.php');
 
-
 $page = isset($_GET['page'])?$_GET['page']:'main';
 $act = isset($_REQUEST['act'])?$_REQUEST['act']:'index';
 $id = isset($_REQUEST['id'])?$_REQUEST['id']:null;

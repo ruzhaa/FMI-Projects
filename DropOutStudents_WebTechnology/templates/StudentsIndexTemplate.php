@@ -1,28 +1,40 @@
 <?php
 
-class StudentsIndexTemplate{
+class StudentsIndexTemplate {
     function __construct() {
     }
 	function display($parameters){
 
 		$html = '<div class="menu">
 			<a href="?page=main" class="menu-item">View all</a>
-			<a href="" class="menu-item active">Add</a>
-			<a href="" class="menu-item">Edit</a>
-			<a href="" class="menu-item">Delete</a>
+			<a href="?page=students" class="menu-item '; if (!$parameters['id']) { $html .= 'active'; } $html .= '">Add</a>';
+			if ($parameters['id']) { $html .= '<a href="?page=students&id='.$parameters['id'].'" class="menu-item active">Edit</a>'; }
+			$html .= '<a href="?page=import" class="menu-item">Import</a>
+			<a href="?page=statistics" class="menu-item">Statistics</a>
 		</div>
 		<div class="container">
-			<form  id="createForm" action="" method="POST">
-				<input type="hidden" name="act" value="create" />
-				<fieldset>
-				<legend>Add score for student:</legend>
+			<form  id="createForm" action="" method="POST">';
+				if ($parameters['id']) {
+					$html .= '<input type="hidden" name="act" value="edit"/>
+							  <input type="hidden" name="id" value="'.$parameters['id'].'">';
+				} else {
+					$html .= '<input type="hidden" name="act" value="create"/>';
+				}
+
+				$html .= '<fieldset>
+				<legend>';
+				if ($parameters['id']) { $html .= 'Edit '; } 
+				else { $html .= 'Add '; }
+				$html .= 'score for student:</legend>
+				<div class="error-msg" data-error="'.$parameters['error'].'"><span>'.$parameters['error'].'</span></div>
+				<div class="success-msg" data-success="'.$parameters['success'].'"><span>'.$parameters['success'].'</span></div>
 				<div class="form-group">
 					<label>Name</label>
-					<input name="name" type="text" value="" required/>
+					<input name="name" type="text" value="'.$parameters['name'].'" required/>
 				</div>
 				<div class="form-group">
 					<label>FN</label>
-					<input name="fk_number" type="text" value="" required/>
+					<input name="fk_number" type="text" value="'.$parameters['fk_number'].'" required/>
 				</div>
 				<div class="form-group">
 					<label>Subject</label>
@@ -50,35 +62,15 @@ class StudentsIndexTemplate{
 					<input name="score" type="text" value="" required/>
 				</div>
 				<div class="form-group">
-					<input type="submit" value="Add" />
+					<input type="submit" value="';
+				if ($parameters['id']) { $html .= 'Edit '; } 
+				else { $html .= 'Add '; }
+				$html .= '" />
 				</div>
 				</fieldset>
 			</form>
-			<table>
-				<tbody>
-				<tr>
-					<td>id</td>
-					<td>name</td>
-					<td>fn</td>
-					<td>subject</td>';
-
-		foreach ($parameters['categories'] as $cat) {
-			$html .= '<td>'.$cat['title'].'</td>';
-		}
-
-		$html .= '</tr>';
-				
-		foreach($parameters['students'] as $student){
-			$html .= '<tr><td>'. $student['id'] . "</td><td>". 
-					 $student['name'] . "</td><td>".
-					 $student['fk_number'] . "</td><td>".
-					 $student['title'] . "</td><td>".
-					 $student['category'] . "</td><td>".
-					 $student['score'] .
-					 "</td></tr>";
-		}
-
-		$html .= '</table></div>';
+		</div>';
+		
 		return $html;
 	}
 }

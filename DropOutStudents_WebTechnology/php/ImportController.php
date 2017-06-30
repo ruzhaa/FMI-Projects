@@ -77,6 +77,9 @@ class ImportController extends BaseController
     }
 
 	function upload() {
+		$error = '';
+		$success = '';		
+		
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 			$inputFileType = 'Excel5';
@@ -121,7 +124,8 @@ class ImportController extends BaseController
 						$i = 0;
 						for ($col = 2; $col <= count($arrayColumn) + 2; $col++) {
 							$score = $curr_sheet->getCellByColumnAndRow($col, $row)->getValue();
-							if($student_id AND $subject_id AND $arrayCategoryId[$i] AND $score){
+
+							if($student_id AND $subject_id AND $arrayCategoryId[$i] AND ($score OR $score == 0 OR $score == '')){
 								$this->insertScore($student_id, $subject_id, $arrayCategoryId[$i], $score);
 							}
 							$i++;
@@ -129,7 +133,16 @@ class ImportController extends BaseController
 					}
 				}
 			}
-			$this->display('ImportTemplate', array());
+			if ($_FILES['file']['error']) {
+				$error = 'Failed to upload file!';
+			} else {
+				$success = 'The file was successfully uploaded!';
+			}
+
+			$this->display('ImportTemplate', array(
+				'error' => $error,
+				'success' => $success
+			));
 		}
 	}
 	

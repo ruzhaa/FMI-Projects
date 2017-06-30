@@ -30,7 +30,7 @@ create table scores (
 	student_id bigint REFERENCES students(id) ON DELETE CASCADE, 
 	subject_id bigint REFERENCES subjects(id) ON DELETE CASCADE,  
 	category_id bigint REFERENCES categories(id) ON DELETE CASCADE, 
-	score double,
+	score double DEFAULT 0.00,
 	PRIMARY KEY (id)
 );
 
@@ -45,14 +45,3 @@ drop table students;
 drop table subjects;
 drop table categories;
 drop table scores;
-
-
-
--- create table test_import (
--- 	id bigint auto_increment PRIMARY KEY,
--- 	name varchar(256),
--- 	fn varchar(256),
--- 	control double,
--- 	project double,
--- 	exam double
--- );

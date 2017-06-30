@@ -6,3 +6,4 @@
 	require_once "StudentsIndexTemplate.php";
 	require_once "ImportTemplate.php";
 	require_once "StatisticsTemplate.php";
+	require_once "SettingsTemplate.php";

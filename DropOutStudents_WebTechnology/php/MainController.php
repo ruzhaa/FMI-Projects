@@ -14,6 +14,27 @@ class MainController extends BaseController {
 		return $categories;
 	}
 
+	private function getIdFinalCategory() {
+        $query_get_category = $this->dbconn->prepare("SELECT categories.id FROM categories WHERE categories.title = 'final'");
+		$query_get_category->execute();
+		$final_category_id = $query_get_category->fetchColumn();
+
+		return $final_category_id;
+    }
+
+	private function checkFinalScores($subject_id, $final_category_id) {
+		$query = $this->dbconn->prepare("SELECT scores.score 
+										FROM scores 
+										LEFT JOIN subjects ON subjects.id = ". $subject_id ." 
+										LEFT JOIN categories ON categories.id=". $final_category_id." 
+										WHERE scores.category_id=".$final_category_id." 
+										AND scores.subject_id=".$subject_id);
+		$query->execute();
+		$is_final = $query->fetchAll();
+
+		return $is_final;
+	}
+
 	private function getFirstSubject() {
 		$query_get_subject = $this->dbconn->prepare("SELECT subjects.id, subjects.title FROM subjects");
 		$query_get_subject->execute();
@@ -39,7 +60,7 @@ class MainController extends BaseController {
 	}
 
 	private function getStudentsAllScores($id) {
-		$query_scores = $this->dbconn->prepare(" SELECT st.id, st.name, st.fk_number, sj.title, group_concat(s.category_id,':',s.score) as scores 
+		$query_scores = $this->dbconn->prepare("SELECT st.id, st.name, st.fk_number, sj.title, group_concat(s.category_id,':',s.score) as scores 
 												FROM scores s 
 												LEFT JOIN students st ON s.student_id = st.id 
 												LEFT JOIN subjects sj ON s.subject_id = sj.id 
@@ -56,18 +77,32 @@ class MainController extends BaseController {
     function index($id = null) {
 		$categories = $this->getAllCategories();
 		$subjects = $this->getAllSubjects();
-		$first_subject = $this->getFirstSubject();
-		$students = $this->getStudentsAllScores($first_subject);
+		$final_category_id = $this->getIdFinalCategory();
 
-		$msg = "Students is filter by ".$this->getSubjectById($first_subject)[0]['title'];
+		if($categories AND $subjects) {
+			$is_final = FALSE;
+			$first_subject = $this->getFirstSubject();
+			$students = $this->getStudentsAllScores($first_subject);
 
-		$this->display('MainTemplate', array(
-			'msg'=>$msg,
-			'students'=>$students, 
-			'categories'=>$categories,
-			'subjects'=>$subjects,
-			'filter_subject_id'=>$first_subject
-		));
+			$is_final_cat = $this->checkFinalScores($first_subject, $final_category_id);
+			if ($is_final_cat) {
+				$is_final = TRUE;
+			}
+
+			$msg = "Students are filter by ".$this->getSubjectById($first_subject)[0]['title'];
+
+			$this->display('MainTemplate', array(
+				'msg'=>$msg,
+				'students'=>$students, 
+				'categories'=>$categories,
+				'subjects'=>$subjects,
+				'filter_subject_id'=>$first_subject,
+				'is_final'=>$is_final
+			));
+
+		} else {
+			$this->display('MainTemplate');
+		}
 
     }
 
@@ -77,6 +112,13 @@ class MainController extends BaseController {
 			$categories = $this->getAllCategories();
 			$subjects = $this->getAllSubjects();
 			$students = $this->getStudentsAllScores($subject_id);
+			$final_category_id = $this->getIdFinalCategory();
+			$is_final = FALSE;
+
+			$is_final_cat = $this->checkFinalScores($subject_id, $final_category_id);
+			if ($is_final_cat) {
+				$is_final = TRUE;
+			}
 
 			$msg = "Students are filter by ".$this->getSubjectById($subject_id)[0]['title'];
 
@@ -85,7 +127,8 @@ class MainController extends BaseController {
 				'students'=>$students, 
 				'categories'=>$categories,
 				'subjects'=>$subjects,
-				'filter_subject_id'=>$subject_id
+				'filter_subject_id'=>$subject_id,
+				'is_final'=>$is_final
 			));
 		}
 	}

@@ -1,5 +1,5 @@
 $(function(){
-	var form = $('#createForm'),
+	var form = $('form '),
 		error_msg = form.find('.error-msg'),
 		success_msg = form.find('.success-msg');
 
@@ -11,6 +11,7 @@ $(function(){
 		success_msg.show();
 	}
 
+
 	var filter_table = $('.filter-data');
 	filter_table.find('.score').each(function(){
 		var $this = $(this),
@@ -18,7 +19,6 @@ $(function(){
 			score = $this.data('score_color'),
 			url = 'img/';
 
-		console.log(Window.location);
 		if (score >= 2 && score < 3) {
 			$this.addClass('red');
 			image.attr('src', url + '1.png');
@@ -36,6 +36,31 @@ $(function(){
 			image.attr('src', url + '5.png');
 				
 		}
-
 	});
+
+	var setting_form = $('#makeSetting');
+	setting_form.on('click', 'input[type=submit]', function(e){
+		e.preventDefault();
+		var students = $(this).data('students_array'),
+			input_array = setting_form.find('.form-group.inline input'),
+			msg = 'You created formula for final score: ';
+		
+		input_array.each(function(index){
+			var $this = $(this),
+				cat_title = $this.data('cat_title'),
+				coef_value = $this.val();
+			console.log(input_array.length, index)
+			
+			msg += cat_title + "*" + coef_value; 
+			if (input_array.length - 1 !== index) {
+				msg += ' + ';
+			} 
+			// console.log(msg);
+		});
+		
+		$('.success-msg span').text(msg);
+		$('.success-msg').show();
+
+		setting_form.submit();
+	})
 });

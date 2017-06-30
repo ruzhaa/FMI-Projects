@@ -87,26 +87,26 @@ class StudentsController extends BaseController {
 			$error = '';
 			$success = '';
 
-			var_dump($category_id);
- 			$student_id = $this->getAllStudentsByFkNumber($fk_number);
+ 			$student_id = $this->getStudentByFkNumber($fk_number);
+			// var_dump($category_id);
 
- 			if ($student_id) {
-				// create new score with all data
-				$query_create_score = $this->dbconn->prepare("INSERT INTO scores (student_id, subject_id, category_id, score) VALUES (?, ?, ?, ?)");
-
-				try { 
-					$query_create_score->execute(array($student_id, $subject_id, $category_id, $score));
-					$success = 'You create successfully new score to '.$name;
-				} catch(PDOException $e) {
-					$error = 'Dublicate entry!';
-  			    }
- 			} else {
+			if (!$student_id) {
 				// create and get student 
 				$query_create_student = $this->dbconn->prepare("INSERT INTO students (name, fk_number) VALUES (?, ?)");
 				$query_create_student->execute(array($name, $fk_number));
 
 				$student_id = $this->getStudentByFkNumber($fk_number);
- 			}
+			}
+
+			// create new score with all data
+			$query_create_score = $this->dbconn->prepare("INSERT INTO scores (student_id, subject_id, category_id, score) VALUES (?, ?, ?, ?)");
+
+			try { 
+				$query_create_score->execute(array($student_id, $subject_id, $category_id, $score));
+				$success = 'You create successfully new score to '.$name;
+			} catch(PDOException $e) {
+				$error = 'Dublicate entry!';
+			}
 		
 			$this->display('StudentsIndexTemplate', array(
 				'subjects' => $subjects,

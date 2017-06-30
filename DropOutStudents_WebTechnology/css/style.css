@@ -1,3 +1,4 @@
+/* general*/
 * { box-sizing: border-box; }
 body { margin: 0px; min-height: 100%; background-color: #fff; overflow-x: hidden; font: 400 14px/1.6 'Open Sans', Verdana, sans-serif; color: #505050; }
 
@@ -7,8 +8,9 @@ body { margin: 0px; min-height: 100%; background-color: #fff; overflow-x: hidden
 .menu-item:hover { background-color: #bbb; color: #fff; }
 .container { width: 80%; margin-left: auto; margin-right: auto; margin-top: 40px; }
 .filter-data, 
-.all-data { max-height: 800px; overflow: hidden; overflow-y: auto; border: 1px solid #bbb; }
+.all-data { max-height: 700px; overflow: hidden; overflow-y: auto; border: 1px solid #bbb; }
 
+/* MainTemplate */
 #filerTable .form-group { margin-bottom: 10px; display: inline-block; }
 #filerTable .form-group label { display: inline-block; }
 #filerTable .form-group input,
@@ -28,9 +30,9 @@ body { margin: 0px; min-height: 100%; background-color: #fff; overflow-x: hidden
 .all-data table thead tr { background-color: rgba(52,73,94,.94); color: #fff; font-size: 16px; font-weight: 500; text-transform: uppercase; }
 .all-data table thead tr > td,
 .all-data table > tbody > tr > td { border: 1px solid #505050; }
-.all-data table > tbody > tr:nth-of-type(even) { background-color: #ddd; }
+.all-data table > tbody > tr:nth-of-type(even) { background-color: rgb(241, 241, 241); }
 
-
+/* StudentsTemplate */
 #createForm { width: 50%; margin-left: auto; margin-right: auto; }
 #createForm fieldset { padding: 20px; }
 #createForm .form-group { margin-bottom: 10px; }
@@ -43,15 +45,20 @@ body { margin: 0px; min-height: 100%; background-color: #fff; overflow-x: hidden
 #createForm .error-msg { display: none; padding: 10px; margin-bottom: 10px; border: 1px solid red; color: red; border-radius: 4px; }
 #createForm .success-msg { display: none; padding: 10px; margin-bottom: 10px; border: 1px solid #4caf50; color: #4caf50; border-radius: 4px; }
 
-#uplaodFile { width: 50%; margin-left: auto; margin-right: auto; }
-#uplaodFile fieldset { padding: 20px; }
-#uplaodFile .form-group { margin-bottom: 10px; }
-#uplaodFile .form-group label { display: inline-block; }
-#uplaodFile .form-group input,
-#uplaodFile .form-group select { display: block; width: 100%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; background-color: #fff; }
-#uplaodFile .form-group input[type=submit] { margin-top: 20px; cursor: pointer; background-color: #4caf50; color: #fff; }
-#uplaodFile .form-group input[type=submit]:hover { background-color: #419644; }
+/* ImportTemplates */
+#uploadFile { width: 50%; margin-left: auto; margin-right: auto; }
+#uploadFile fieldset { padding: 20px; }
+#uploadFile .form-group { margin-bottom: 10px; }
+#uploadFile .form-group label { display: inline-block; }
+#uploadFile .form-group input,
+#uploadFile .form-group select { display: block; width: 100%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; background-color: #fff; }
+#uploadFile .form-group input[type=submit] { margin-top: 20px; cursor: pointer; background-color: #4caf50; color: #fff; }
+#uploadFile .form-group input[type=submit]:hover { background-color: #419644; }
 
+#uploadFile .error-msg { display: none; padding: 10px; margin-bottom: 10px; border: 1px solid red; color: red; border-radius: 4px; }
+#uploadFile .success-msg { display: none; padding: 10px; margin-bottom: 10px; border: 1px solid #4caf50; color: #4caf50; border-radius: 4px; }
+
+/* StatisticsTemplate */
 #statisticForm { width: 50%; margin-left: auto; margin-right: auto; }
 #statisticForm fieldset { padding: 20px; }
 #statisticForm .form-group { margin-bottom: 10px; }
@@ -68,8 +75,14 @@ body { margin: 0px; min-height: 100%; background-color: #fff; overflow-x: hidden
 .filter-data table thead tr { background-color: rgba(52,73,94,.94); color: #fff; font-size: 16px; font-weight: 500; text-transform: uppercase; }
 .filter-data table thead tr > td,
 .filter-data table > tbody > tr > td { border: 1px solid #505050; }
-.filter-data table > tbody > tr:hover { background-color: #ddd; }
+.filter-data table > tbody > tr:hover { background-color: rgb(241, 241, 241); }
 .filter-data table > tbody > tr > td:last-child { text-align: center; }
+
+.red { background-color: rgba(255, 0, 0, 0.2); }
+.orange { background-color: rgba(255, 152, 0, 0.2); }
+.blue { background-color: rgba(0, 142, 255, 0.2); }
+.purpul { background-color: rgba(156, 39, 176, 0.2); }
+.green { background-color: rgba(6, 255, 6, 0.2); }
 
 .filter-data .score.red { background-color: rgba(255, 0, 0, 0.2); }
 .filter-data .score.orange { background-color: rgba(255, 152, 0, 0.2); }
@@ -79,3 +92,22 @@ body { margin: 0px; min-height: 100%; background-color: #fff; overflow-x: hidden
 
 .filter-data .img img { width: 50px; height: 50px; }
 
+.legend ul { list-style-type: none; padding-left: 0; }
+.legend ul li { margin-right: 14px; display: inline-block; }
+.legend ul li .info { margin: 0 10px;}
+.legend ul li.color { padding: 10px;  }
+
+/* SettingsTemplate */
+.settings .success-msg { display: none; padding: 10px; margin-bottom: 10px; border: 1px solid #4caf50; color: #4caf50; border-radius: 4px; }
+.settings .error-msg { display: none; padding: 10px; margin-bottom: 10px; border: 1px solid red; color: red; border-radius: 4px; }
+
+.settings { width: 50%; margin-left: auto; margin-right: auto; }
+.settings fieldset { padding: 20px; }
+.settings .form-group { margin-bottom: 10px; }
+.settings .form-group label { display: inline-block; }
+.settings .form-group input,
+.settings .form-group select { display: block; width: 100%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; background-color: #fff; }
+.settings .form-group input[type=submit] { margin-top: 20px; cursor: pointer; background-color: #4caf50; color: #fff; }
+.settings .form-group input[type=submit]:hover { background-color: #419644; }
+.settings .form-group.inline label { display: inline-block; width: 28%; }
+.settings .form-group.inline input { display: inline-block; width: 66%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; background-color: #fff; }

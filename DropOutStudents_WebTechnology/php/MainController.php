@@ -25,10 +25,7 @@ class MainController extends BaseController {
 	private function checkFinalScores($subject_id, $final_category_id) {
 		$query = $this->dbconn->prepare("SELECT scores.score 
 										FROM scores 
-										LEFT JOIN subjects ON subjects.id = ". $subject_id ." 
-										LEFT JOIN categories ON categories.id=". $final_category_id." 
-										WHERE scores.category_id=".$final_category_id." 
-										AND scores.subject_id=".$subject_id);
+										LEFT JOIN subjects ON subjects.id = ". $subject_id ." LEFT JOIN categories ON categories.id='". $final_category_id."' WHERE scores.category_id='".$final_category_id."' AND scores.subject_id=".$subject_id);
 		$query->execute();
 		$is_final = $query->fetchAll();
 

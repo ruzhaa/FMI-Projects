@@ -25,7 +25,7 @@ class ImportTemplate{
 						<div class="success-msg" data-success="'.$parameters['success'].'"><span>'.$parameters['success'].'</span></div>
 						<div class="form-group">
 							<label>File</label>
-							<input name="file" type="file" value="" required/>
+							<input id="file" name="file" type="file" value="" required/>
 						</div>
 						<div class="form-group">
 							<input type="submit" value="Add" />

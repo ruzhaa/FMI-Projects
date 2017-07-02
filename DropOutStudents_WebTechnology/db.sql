@@ -1,3 +1,5 @@
+-- create database ruzha_project;
+
 create table students(
 	id bigint auto_increment PRIMARY KEY, 
 	name varchar(256), 

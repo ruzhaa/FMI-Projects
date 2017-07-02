@@ -8,7 +8,7 @@ body { margin: 0px; min-height: 100%; background-color: #fff; overflow-x: hidden
 .menu-item:hover { background-color: #bbb; color: #fff; }
 .container { width: 80%; margin-left: auto; margin-right: auto; margin-top: 40px; }
 .filter-data, 
-.all-data { max-height: 700px; overflow: hidden; overflow-y: auto; border: 1px solid #bbb; }
+.all-data { max-height: 400px; overflow: hidden; overflow-y: auto; border: 1px solid #bbb; }
 
 /* MainTemplate */
 #filerTable .form-group { margin-bottom: 10px; display: inline-block; }

@@ -83,14 +83,15 @@ class ImportController extends BaseController
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 			$inputFileType = 'Excel5';
-			
 			$inputFileName = UPLOAD_DIR.$_FILES['file']['name'];
 			move_uploaded_file($_FILES["file"]["tmp_name"], $inputFileName);
-
+			// set permissions after successfully uload
+			chmod($inputFileName, 0777);
 			$objReader = PHPExcel_IOFactory::createReader($inputFileType);
 
 			$objPHPExcel = $objReader->load($inputFileName);
 			$sheet_names = ($objPHPExcel->getSheetNames());
+
 
 			foreach ($sheet_names as $sheet_name) {
 				$curr_sheet = $objPHPExcel->getSheetByName($sheet_name);

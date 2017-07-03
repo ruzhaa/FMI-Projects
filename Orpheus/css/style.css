@@ -1,0 +1,53 @@
+/*  
+default dark -> #2c3e50
+hover dark -> #1a242f
+default green -> #18bc9c
+hover green -> #128f76
+orange -> #f39c12
+hover orange -> #c87f0a
+ */
+
+/* general styles */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+footer {
+    margin: 50px 0;
+}
+
+body { overflow-x: hidden; }
+footer { background-color: #2c3e50; color: #fff; border-top: 1px solid #eee; padding: 20px 0; margin-bottom: 0; }
+
+.btn-custom { color: #fff; background-color: #18bc9c; }
+.btn-custom:hover { color: #fff; background-color: #128f76; }
+p,
+ul > li { font-size: 16px; }
+.navbar-custom { background-color: #2c3e50; }
+.navbar-custom .navbar-nav > li > a { color: #fff; }
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > .active > a { color: #fff; background-color: #1a242f; }
+.navbar-custom .navbar-toggle { background-color: transparent; border-color: #1a242f; }
+.navbar-custom .navbar-toggle .icon-bar { background-color: #fff; }
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus { background-color: #1a242f;  }
+.btn-green { background-color: #18bc9c !important; color: #fff !important; padding: 10px 15px;  }
+
+.logo img { width: 100%; }
+section { margin-top: -50px; padding-top: 50px; }
+section img { width: 100%; height: 200px; transition: all 0.45s ease; -webkit-transition: all 0.45s ease; }
+section figure:hover img { transform: scale(1.05); -webkit-transform: scale(1.05); }
+section figure { overflow: hidden; padding: 5px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 30px; }
+section figure p { margin: 5px 0; color: #c87f0a; height: 40px; font-size: 14px; }
+section h1 { text-align: center; color: #18bc9c; }
+#history { background-color: #eee; }
+#contactForm { margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; padding: 10px; background-color: rgba(253, 211, 144, 0.41); }
+legend { border-bottom: 0px; }
+
+@media (max-width: 767px) {
+	section img { width: 100%; height: auto; }
+}
